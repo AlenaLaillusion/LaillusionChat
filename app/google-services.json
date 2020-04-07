@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "551370188500",
+    "firebase_url": "https://adichat-8848a.firebaseio.com",
+    "project_id": "adichat-8848a",
+    "storage_bucket": "adichat-8848a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:551370188500:android:a1a92a9b3d0534d7f57d41",
+        "android_client_info": {
+          "package_name": "com.example.adichat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "551370188500-86rpb4onklfei3cqm0iqqcq55vhdu032.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiUJ7DCqZ5TTtdooY5I8lZnIQF-BvYS5A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "551370188500-86rpb4onklfei3cqm0iqqcq55vhdu032.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
