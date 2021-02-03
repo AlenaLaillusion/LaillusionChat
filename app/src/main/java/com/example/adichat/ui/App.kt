@@ -65,7 +65,6 @@ interface AppComponent {
     fun inject(fragment: UserFragment)
     fun inject(fragment: ForgetPasswordFragment)
 
-    //services
     fun inject(service: FirebaseService)
 
 
