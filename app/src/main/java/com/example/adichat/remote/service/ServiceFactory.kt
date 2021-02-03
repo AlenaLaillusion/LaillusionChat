@@ -1,5 +1,6 @@
 package com.example.adichat.remote.service
 
+import android.util.Log
 import com.google.gson.Gson
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -7,8 +8,11 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
+
 object ServiceFactory {
-    const val BASE_URL = "https://lea.d.sysinit.io/api/"
+    const val SERVER_URL = "https://lea.d.sysinit.io"
+    const val BASE_URL = "$SERVER_URL/api/"
+    const val TAG = "ServiceFactory"
 
     fun makeService(isDebug: Boolean): ApiService {
         val okHttpClient = makeOkHttpClient(
@@ -23,6 +27,7 @@ object ServiceFactory {
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
+        Log.d(TAG, " okHttpClient= " + okHttpClient + " BASE_URL " + BASE_URL)
         return retrofit.create(ApiService::class.java)
     }
 

@@ -1,8 +1,8 @@
 package com.example.adichat.domain.account
 
-import com.example.adichat.domain.type.None
 import com.example.adichat.domain.type.Either
-import com.example.adichat.domain.type.exception.Failure
+import com.example.adichat.domain.type.Failure
+import com.example.adichat.domain.type.None
 
 interface AccountRepository {
     fun login(email: String, password: String): Either<Failure, AccountEntity>
@@ -16,4 +16,6 @@ interface AccountRepository {
     fun updateAccountLastSeen(): Either<Failure, None>
 
     fun editAccount(entity: AccountEntity): Either<Failure, AccountEntity>
+
+    fun checkAuth(): Either<Failure, Boolean>
 }

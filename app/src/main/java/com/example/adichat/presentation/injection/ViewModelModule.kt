@@ -2,8 +2,7 @@ package com.example.adichat.presentation.injection
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.adichat.presentation.viewmodel.AccountViewModel
-import com.example.adichat.presentation.viewmodel.ViewModelFactory
+import com.example.adichat.presentation.viewmodel.*
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -16,5 +15,20 @@ abstract class ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(AccountViewModel::class)
-    abstract fun bindAccountViewModel(accountViewModel: AccountViewModel) : ViewModel
+    abstract fun bindAccountViewModel(accountViewModel: AccountViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(FriendsViewModel::class)
+    abstract fun bindFriendsViewModel(friendsViewModel: FriendsViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MediaViewModel::class)
+    abstract fun bindMediaViewModel(mediaViewModel: MediaViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MessagesViewModel::class)
+    abstract fun bindMessagesViewModel(messagesViewModel: MessagesViewModel): ViewModel
 }

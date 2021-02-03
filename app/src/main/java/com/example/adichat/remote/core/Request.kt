@@ -1,7 +1,8 @@
 package com.example.adichat.remote.core
 
+import android.util.Log
 import com.example.adichat.domain.type.Either
-import com.example.adichat.domain.type.exception.Failure
+import com.example.adichat.domain.type.Failure
 import retrofit2.Call
 import retrofit2.Response
 import javax.inject.Inject
@@ -22,7 +23,7 @@ class Request @Inject constructor(private val networkHandler: NetworkHandler) {
             val response = call.execute()
             when (response.isSucceed()) {
                 true -> Either.Right(transform((response.body()!!)))
-                false -> Either.Left(Failure.ServerError)
+                false -> Either.Left(response.parseError())
             }
         } catch (exception: Throwable) {
             Either.Left(Failure.ServerError)
@@ -32,12 +33,23 @@ class Request @Inject constructor(private val networkHandler: NetworkHandler) {
 
 fun <T : BaseResponse> Response<T>.isSucceed(): Boolean {
     return isSuccessful && body() != null && (body() as BaseResponse).success == 1
+    Log.e("parseError", "isSuccessful= " + isSuccessful + "body()= " + body())
 }
 
 fun <T : BaseResponse> Response<T>.parseError(): Failure {
     val message = (body() as BaseResponse).message
     return  when (message) {
+        "there is a user has this email",
         "email already exist" -> Failure.EmailAlreadyExistError
+        "error in email or password" -> Failure.AuthError
+        "Token is invalid" -> Failure.TokenError
+        "this contact is already in your friends list" -> Failure.AlreadyFriendError
+        "already found in your friend requests",
+        "you requested adding this friend before" -> Failure.AlreadyRequestedFriendError
+        "No Contact has this email" -> Failure.ContactNotFoundError
+        " this email is not registered before" -> Failure.EmailNotRegisteredError
+        "can't send email to you" -> Failure.CantSendEmailError
         else -> Failure.ServerError
     }
+    Log.e("parseError", "message= " + message)
 }

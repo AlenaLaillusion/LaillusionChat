@@ -2,7 +2,7 @@ package com.example.adichat.domain.interactor
 
 
 import com.example.adichat.domain.type.Either
-import com.example.adichat.domain.type.exception.Failure
+import com.example.adichat.domain.type.Failure
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 

@@ -131,7 +131,7 @@
         tools:layout_editor_absoluteX="120dp"/>
 
     <Button
-        android:id="@+id/btnAlreadyHaveAkk"
+        android:id="@+id/btnAlreadyHaveAccount"
         style="@style/Button.Primary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
